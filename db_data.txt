@@ -1,0 +1,67 @@
+//Create database
+db.exec(`CREATE TABLE IF NOT EXISTS fish (
+        id INTEGER PRIMARY KEY,
+        species TEXT NOT NULL,
+        length INTEGER NOT NULL,
+        weight INTEGER NOT NULL,
+        bait TEXT,
+        colour TEXT,
+        lake TEXT,
+        date TEXT,
+        time TEXT,
+        windstrength INTEGER,
+        winddirection TEXT,
+        hpa INTEGER,
+        weather TEXT,
+        created_at TEXT DEFAULT(datetime('now')))`);
+
+// Prepare and insert values
+const insert = db.prepare(
+  "INSERT INTO fish (species, length, weight, bait, colour, lake, date, time, windstrength, winddirection, hpa ,weather) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+);
+
+const fishOne = insert.run(
+  "Pike",
+  112,
+  8900,
+  "McTail",
+  "Red",
+  "Helgasjön",
+  "2026-03-01",
+  "1000",
+  2,
+  "SE",
+  1020,
+  "Sunny",
+);
+
+const fishTwo = insert.run(
+  "Pearch",
+  47,
+  1050,
+  "Babybite",
+  "Hollow",
+  "Mälaren",
+  "2025-08-07",
+  "0810",
+  3,
+  "NE",
+  1018,
+  "Sunny",
+);
+
+const fishThree = insert.run(
+  "Zander",
+  72,
+  3500,
+  "Nils Master",
+  "Green",
+  "Ivösjön",
+  "2025-06-03",
+  "2230",
+  1,
+  "S",
+  1022,
+  "Cloudy",
+);
+
