@@ -15,8 +15,8 @@ html {
 body {
   font-weight: 400;
   font-family: "Rubik", sans-serif;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   min-height: 100vh;
   margin: 0;
   background-color: #ddd;
@@ -177,6 +177,38 @@ a:active {
 }
 
 /* Statistics page */
-.statistics-section {
+.stats-section {
   background-image: url("../img/sand.jpg");
+  min-height: 100vh;
+}
+
+.stats-container {
+  padding: 2em;
+
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+.stats-group {
+  flex-direction: column;
+  background-color: #144bb8;
+  padding: 1em;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px #999;
+  border: 2px solid #fff;
+}
+
+.stats-group-h3 {
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.results {
+  padding: 1em;
+}
+
+.results-text {
+  color: #fff;
+  margin-bottom: 0.3em;
 }

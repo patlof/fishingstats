@@ -8,3 +8,6 @@ catchBtnEl?.addEventListener("click", () => {
 
 // Statistic button
 const statBtnEl = document.querySelector(".statistic-btn");
+statBtnEl?.addEventListener("click", () => {
+  window.location.href = "/statistics";
+});
