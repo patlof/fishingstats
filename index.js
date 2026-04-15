@@ -13,35 +13,104 @@ const data = db.prepare("SELECT * FROM fish").all();
 // Get current year
 const currentYear = new Date().getFullYear().toString();
 
-// Function for sort fish by weight
+// Function for sort fish by weight and first 3.
 function fishByWeight(species) {
   return data
     .filter((fish) => fish.species === species)
-    .sort((a, b) => b.weight - a.weight);
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 3);
 }
-//Funktion for sort fish by weight this year
+//Function for sort fish by weight this year and first 3.
 function fishByWeightThisYear(species) {
   return data
     .filter(
       (fish) => fish.species === species && fish.date.startsWith(currentYear),
     )
-    .sort((a, b) => b.weight - a.weight);
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 3);
 }
 
-//Funktion for sort fish by length
+//Function for sort fish by length and first 3.
 function fishByLength(species) {
   return data
     .filter((fish) => fish.species === species)
-    .sort((a, b) => b.length - a.length);
+    .sort((a, b) => b.length - a.length)
+    .slice(0, 3);
 }
 
-//Funktion for sort fish by length this year
+//Function for sort fish by length this year and first 3.
 function fishByLengthThisYear(species) {
   return data
     .filter(
       (fish) => fish.species === species && fish.date.startsWith(currentYear),
     )
-    .sort((a, b) => b.length - a.length);
+    .sort((a, b) => b.length - a.length)
+    .slice(0, 3);
+}
+
+// Function to count and sort baits by usage frequency and first 5
+function baitUsageStats() {
+  const baitCounts = {};
+  // Count occurrences of each bait
+  data.forEach((fish) => {
+    if (fish.bait) {
+      baitCounts[fish.bait] = (baitCounts[fish.bait] || 0) + 1;
+    }
+  });
+  // Convert to array and sort by count descending
+  return Object.entries(baitCounts)
+    .map(([bait, count]) => ({ bait, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+}
+
+// Function to count and sort baits by usage frequency this year and first 3
+function baitUsageStatsThisYear() {
+  const baitCountsThisYear = {};
+  // Count occurrences of each bait
+  data.forEach((fish) => {
+    if (fish.bait && fish.date.startsWith(currentYear)) {
+      baitCountsThisYear[fish.bait] = (baitCountsThisYear[fish.bait] || 0) + 1;
+    }
+  });
+  // Convert to array and sort by count descending
+  return Object.entries(baitCountsThisYear)
+    .map(([bait, count]) => ({ bait, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 3);
+}
+
+// Function to count and sort colours by usage frequency and first 5
+function colourUsageStats() {
+  const colourCounts = {};
+  // Count occurrences of each colour
+  data.forEach((fish) => {
+    if (fish.colour) {
+      colourCounts[fish.colour] = (colourCounts[fish.colour] || 0) + 1;
+    }
+  });
+  // Convert to array and sort by count descending
+  return Object.entries(colourCounts)
+    .map(([colour, count]) => ({ colour, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+}
+
+// Function to count and sort colours by usage frequency this year and first 3
+function colourUsageStatsThisYear() {
+  const colourCountsThisYear = {};
+  // Count occurrences of each colour
+  data.forEach((fish) => {
+    if (fish.colour && fish.date.startsWith(currentYear)) {
+      colourCountsThisYear[fish.colour] =
+        (colourCountsThisYear[fish.colour] || 0) + 1;
+    }
+  });
+  // Convert to array and sort by count descending
+  return Object.entries(colourCountsThisYear)
+    .map(([colour, count]) => ({ colour, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 3);
 }
 
 ///////////////////////////PIKE///////////////////////////
@@ -83,8 +152,26 @@ const zanderByLength = fishByLength("Zander");
 // Sort perch by length this year
 const zanderByLengthThisYear = fishByLengthThisYear("Zander");
 
+///////////////////////////Bait///////////////////////////
+// Sort bait usage statistics
+const baitStats = baitUsageStats();
+
+// Sort bait usage statistics this year
+const baitStatsThisYear = baitUsageStatsThisYear();
+
+///////////////////////////Colours///////////////////////////
+// Sort colours usage statistics
+const colourStats = colourUsageStats();
+
+// Sort colours usage statistics this year
+const colourStatsThisYear = colourUsageStatsThisYear();
+
 //To be able to get form data
 app.use(express.urlencoded({ extended: true }));
+
+////////////////////////////
+////////// ROUTES //////////
+////////////////////////////
 
 //Startpage/Intropage
 app.get("/", (req, res) => {
@@ -141,6 +228,10 @@ app.get("/statistics", (req, res) => {
     zanderByWeightThisYear: zanderByWeightThisYear,
     zanderByLength: zanderByLength,
     zanderByLengthThisYear: zanderByLengthThisYear,
+    baitStats: baitStats,
+    baitStatsThisYear: baitStatsThisYear,
+    colourStats: colourStats,
+    colourStatsThisYear: colourStatsThisYear,
   });
 });
 

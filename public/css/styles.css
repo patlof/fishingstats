@@ -48,7 +48,10 @@ body {
 }
 
 .nav-links {
+  display: flex;
+  justify-content: space-between;
   list-style: none;
+  gap: 2em;
 }
 
 a:link,
@@ -93,7 +96,7 @@ a:active {
   cursor: pointer;
 }
 
-/* Regioster a catch-page */
+/* Register a catch-page */
 .catch-section {
   display: flex;
   justify-content: center;
@@ -182,14 +185,38 @@ a:active {
   min-height: 100vh;
 }
 
+.stats-headlines {
+  display: flex;
+  justify-content: center;
+}
+
+.stats-headlines:first-child {
+  padding-top: 3em;
+}
+
+.titles {
+  background-color: #fff;
+  padding: 1em 1.5em;
+  color: #144bb8;
+  border: 3px solid #144bb8;
+  border-radius: 15px;
+}
+
 .stats-container {
   padding: 2em;
-
+  width: 70%;
   margin: auto;
   display: flex;
   justify-content: center;
-  gap: 2em;
+  gap: 7em;
+  margin-bottom: 3em;
+  border-bottom: 1px solid #fff;
 }
+
+.divider {
+  margin-bottom: 2em;
+}
+
 .stats-group {
   flex-direction: column;
   background-color: #144bb8;
@@ -201,7 +228,7 @@ a:active {
 
 .stats-group-h3 {
   color: #fff;
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 
 .results {

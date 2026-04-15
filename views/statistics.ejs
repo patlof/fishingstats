@@ -16,29 +16,35 @@
   <body>
     <%-include ("partials/header")%>
     <section class="stats-section">
+      <div class="stats-headlines">
+        <h2 class="titles">Pikes</h2>
+      </div>
       <div class="stats-container">
+        
         <div class="stats-group">
           <div>
 
             <!-- ----------PIKES ------------>
             <!-- Heaviest pike-->
+             
             <h3 class="stats-group-h3">Heaviest pike totally</h3>
-          <% pikeByWeight.forEach((fish, index) => { %>
-              <div class="results">
-                <p class="results-text">
-                  <%= index + 1 %>. Weight: <%= fish.weight %> g
-              
-                </p>
-                <p class="results-text">
-                  Date: <%= fish.date %>
-                </p>
-              </div>
+              <% pikeByWeight.forEach((fish, index) => { %>
+                <div class="results">
+                  <p class="results-text">
+                    <%= index + 1 %>. Weight: <%= fish.weight %> g
+                
+                  </p>
+                  <p class="results-text">
+                    Date: <%= fish.date %>
+                  </p>
+                </div>
               <% }) %>
           </div>
+          <hr class="divider">
 
           <!-- Heaviest PIKE this year -->
           <h3 class="stats-group-h3">Heaviest pike this year</h3>
-          <% pikeByWeightThisYear.forEach((fish, index) => { %>
+            <% pikeByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                  <%= index + 1 %>. Weight: <%= fish.weight %> g 
@@ -48,13 +54,13 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
         </div>
 
           <!-- Longest Pike -->
         <div class="stats-group">
           <h3 class="stats-group-h3">Longest pike totally</h3>
-          <% pikeByLength.forEach((fish, index) => { %>
+            <% pikeByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Length: <%= fish.length %> cm 
@@ -63,11 +69,12 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
+          <hr class="divider">
 
             <!-- Longest pike this year -->
           <h3 class="stats-group-h3">Longest pike this year</h3>
-          <% pikeByLengthThisYear.forEach((fish, index) => { %>
+            <% pikeByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Length: <%= fish.length %> cm 
@@ -76,14 +83,19 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
         </div>
-
+      </div>
+      
         <!-- ----------PERCH ------------>
+         <div class="stats-headlines">
+        <h2 class="titles">Perch</h2>
+      </div>
          <!-- Heaviest perch-->
+      <div class="stats-container">
         <div class="stats-group">
           <h3 class="stats-group-h3">Heaviest perch totally</h3>
-          <% perchByWeight.forEach((fish, index) => { %>
+            <% perchByWeight.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Weight: <%= fish.weight %> g
@@ -92,11 +104,12 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
-          
+            <% }) %>
+          <hr class="divider">
+
               <!-- Heaviest perch this year -->
           <h3 class="stats-group-h3">Heaviest perch this year</h3>
-          <% perchByWeightThisYear.forEach((fish, index) => { %>
+            <% perchByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Weight: <%= fish.weight %> g
@@ -105,13 +118,13 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
         </div>
 
         <!-- Longest perch-->
         <div class="stats-group">
           <h3 class="stats-group-h3">Longest perch totally</h3>
-          <% perchByLength.forEach((fish, index) => { %>
+            <% perchByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Length: <%= fish.length %> cm 
@@ -120,7 +133,8 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
+            <hr class="divider">
 
               <!-- Longest perch this year -->
           <h3 class="stats-group-h3">Longest perch this year</h3>
@@ -135,22 +149,26 @@
               </div>
               <% }) %>
         </div>
-
+      </div>
         <!------------ ZANDERS ------------>
+        <div class="stats-headlines">
+        <h2 class="titles">Zander</h2>
+      </div>
         <!-- Heaviest zander -->
+      <div class="stats-container">
         <div class="stats-group">
            <h3 class="stats-group-h3">Heaviest zander totally</h3>
-          <% zanderByWeight.forEach((fish, index) => { %>
-              <div class="results">
-                <p class="results-text">
-                  <%= index + 1 %>. Weight: <%= fish.weight %> g
-                </p>
-                <p class="results-text">
-                  Date: <%= fish.date %>
-                </p>
-              </div>
+              <% zanderByWeight.forEach((fish, index) => { %>
+                <div class="results">
+                  <p class="results-text">
+                    <%= index + 1 %>. Weight: <%= fish.weight %> g
+                  </p>
+                  <p class="results-text">
+                    Date: <%= fish.date %>
+                  </p>
+                </div>
               <% }) %>
-
+            <hr class="divider">
 
           <!-- Heaviest zander this year -->
           <h3 class="stats-group-h3">Heaviest zander this year</h3>
@@ -169,7 +187,7 @@
         <!-- Longest zander -->
         <div class="stats-group">
           <h3 class="stats-group-h3">Longest zander totally</h3>
-          <% zanderByLength.forEach((fish, index) => { %>
+            <% zanderByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
                   <%= index + 1 %>. Length: <%= fish.length %> cm 
@@ -178,7 +196,8 @@
                   Date: <%= fish.date %>
                 </p>
               </div>
-              <% }) %>
+            <% }) %>
+            <hr class="divider">
 
           <!-- Longest zander this year -->
           <h3 class="stats-group-h3">Longest zander this year</h3>
@@ -193,15 +212,57 @@
               </div>
               <% }) %>
         </div>
-        <!------------ LURES AND COLOURS ------------>
+      </div>
+        <!------------ LURES ------------>
+      <div class="stats-headlines">
+        <h2 class="titles">Lures and colours</h2>
+      </div>
+      <div class="stats-container">
+        <!-- Most used baits -->
         <div class="stats-group">
-          <h3>Best lure totally</h3>
-          <h3>Best lure this year</h3>
+          <h3 class="stats-group-h3">Best lure totally</h3>
+            <% baitStats.forEach((bait, index) => { %>
+              <div class="results">
+                <p class="results-text">
+                  <%= index + 1 %>. <%= bait.bait %> 
+                </p>
+              </div>
+            <% }) %>
+          <hr class="divider">
+
+        <!-- Most used baits this year -->
+          <h3 class="stats-group-h3">Best lure this year</h3>
+            <% baitStatsThisYear.forEach((bait, index) => { %>
+              <div class="results">
+                <p class="results-text">
+                  <%= index + 1 %>. <%= bait.bait %> 
+                </p>
+              </div>
+            <% }) %>
         </div>
 
+        <!------------ COLOURS ------------>
         <div class="stats-group">
-          <h3>Best colour totally</h3>
-          <h3>Best colour this year</h3>
+          <!-- Most used colours -->
+          <h3 class="stats-group-h3">Best colour totally</h3>
+            <% colourStats.forEach((colour, index) => { %>
+              <div class="results">
+                <p class="results-text">
+                  <%= index + 1 %>. <%= colour.colour %> 
+                </p>
+              </div>
+            <% }) %>
+            <hr class="divider">
+
+          <!-- Most used colours this year -->
+          <h3 class="stats-group-h3">Best colour this year</h3>
+          <% colourStatsThisYear.forEach((colour, index) => { %>
+                <div class="results">
+                  <p class="results-text">
+                    <%= index + 1 %>. <%= colour.colour %> 
+                  </p>
+                </div>
+                <% }) %>
         </div>
       </div>
     </section>
