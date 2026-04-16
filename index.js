@@ -4,24 +4,20 @@ import Database from "better-sqlite3";
 const app = express();
 const port = 4000;
 app.use(express.static("public"));
-//Connect to db
+app.set("view engine", "ejs");
+
+// Connect to db
 const db = new Database("data.db");
 
-//Read from database
-const data = db.prepare("SELECT * FROM fish").all();
-
-// Get current year
-const currentYear = new Date().getFullYear().toString();
-
 // Function for sort fish by weight and first 3.
-function fishByWeight(species) {
+function fishByWeight(data, species) {
   return data
     .filter((fish) => fish.species === species)
     .sort((a, b) => b.weight - a.weight)
     .slice(0, 3);
 }
 //Function for sort fish by weight this year and first 3.
-function fishByWeightThisYear(species) {
+function fishByWeightThisYear(data, currentYear, species) {
   return data
     .filter(
       (fish) => fish.species === species && fish.date.startsWith(currentYear),
@@ -31,7 +27,7 @@ function fishByWeightThisYear(species) {
 }
 
 //Function for sort fish by length and first 3.
-function fishByLength(species) {
+function fishByLength(data, species) {
   return data
     .filter((fish) => fish.species === species)
     .sort((a, b) => b.length - a.length)
@@ -39,7 +35,7 @@ function fishByLength(species) {
 }
 
 //Function for sort fish by length this year and first 3.
-function fishByLengthThisYear(species) {
+function fishByLengthThisYear(data, currentYear, species) {
   return data
     .filter(
       (fish) => fish.species === species && fish.date.startsWith(currentYear),
@@ -49,7 +45,7 @@ function fishByLengthThisYear(species) {
 }
 
 // Function to count and sort baits by usage frequency and first 5
-function baitUsageStats() {
+function baitUsageStats(data) {
   const baitCounts = {};
   // Count occurrences of each bait
   data.forEach((fish) => {
@@ -65,7 +61,7 @@ function baitUsageStats() {
 }
 
 // Function to count and sort baits by usage frequency this year and first 3
-function baitUsageStatsThisYear() {
+function baitUsageStatsThisYear(data, currentYear) {
   const baitCountsThisYear = {};
   // Count occurrences of each bait
   data.forEach((fish) => {
@@ -81,7 +77,7 @@ function baitUsageStatsThisYear() {
 }
 
 // Function to count and sort colours by usage frequency and first 5
-function colourUsageStats() {
+function colourUsageStats(data) {
   const colourCounts = {};
   // Count occurrences of each colour
   data.forEach((fish) => {
@@ -97,7 +93,7 @@ function colourUsageStats() {
 }
 
 // Function to count and sort colours by usage frequency this year and first 3
-function colourUsageStatsThisYear() {
+function colourUsageStatsThisYear(data, currentYear) {
   const colourCountsThisYear = {};
   // Count occurrences of each colour
   data.forEach((fish) => {
@@ -112,59 +108,6 @@ function colourUsageStatsThisYear() {
     .sort((a, b) => b.count - a.count)
     .slice(0, 3);
 }
-
-///////////////////////////PIKE///////////////////////////
-// Sort pike by weight
-const pikeByWeight = fishByWeight("Pike");
-
-// Sort pike by weight this year
-const pikeByWeightThisYear = fishByWeightThisYear("Pike");
-
-// Sort pike by length
-const pikeByLength = fishByLength("Pike");
-
-// Sort pike by length this year
-const pikeByLengthThisYear = fishByLengthThisYear("Pike");
-
-///////////////////////////PERCH///////////////////////////
-// Sort perch by weight
-const perchByWeight = fishByWeight("Perch");
-
-// Sort perch by weight this year
-const perchByWeightThisYear = fishByWeightThisYear("Perch");
-
-// Sort perch by length
-const perchByLength = fishByLength("Perch");
-
-// Sort perch by length this year
-const perchByLengthThisYear = fishByLengthThisYear("Perch");
-
-///////////////////////////Zander///////////////////////////
-// Sort zander by weight
-const zanderByWeight = fishByWeight("Zander");
-
-// Sort zander by weight this year
-const zanderByWeightThisYear = fishByWeightThisYear("Zander");
-
-// Sort zander by length
-const zanderByLength = fishByLength("Zander");
-
-// Sort perch by length this year
-const zanderByLengthThisYear = fishByLengthThisYear("Zander");
-
-///////////////////////////Bait///////////////////////////
-// Sort bait usage statistics
-const baitStats = baitUsageStats();
-
-// Sort bait usage statistics this year
-const baitStatsThisYear = baitUsageStatsThisYear();
-
-///////////////////////////Colours///////////////////////////
-// Sort colours usage statistics
-const colourStats = colourUsageStats();
-
-// Sort colours usage statistics this year
-const colourStatsThisYear = colourUsageStatsThisYear();
 
 //To be able to get form data
 app.use(express.urlencoded({ extended: true }));
@@ -215,23 +158,63 @@ app.post("/catch", (req, res) => {
 });
 
 app.get("/statistics", (req, res) => {
+  const data = db.prepare("SELECT * FROM fish").all();
+  const currentYear = new Date().getFullYear().toString();
+
+  const pikeByWeight = fishByWeight(data, "Pike");
+  const pikeByWeightThisYear = fishByWeightThisYear(data, currentYear, "Pike");
+  const pikeByLength = fishByLength(data, "Pike");
+  const pikeByLengthThisYear = fishByLengthThisYear(data, currentYear, "Pike");
+
+  const perchByWeight = fishByWeight(data, "Perch");
+  const perchByWeightThisYear = fishByWeightThisYear(
+    data,
+    currentYear,
+    "Perch",
+  );
+  const perchByLength = fishByLength(data, "Perch");
+  const perchByLengthThisYear = fishByLengthThisYear(
+    data,
+    currentYear,
+    "Perch",
+  );
+
+  const zanderByWeight = fishByWeight(data, "Zander");
+  const zanderByWeightThisYear = fishByWeightThisYear(
+    data,
+    currentYear,
+    "Zander",
+  );
+  const zanderByLength = fishByLength(data, "Zander");
+  const zanderByLengthThisYear = fishByLengthThisYear(
+    data,
+    currentYear,
+    "Zander",
+  );
+
+  const baitStats = baitUsageStats(data);
+  const baitStatsThisYear = baitUsageStatsThisYear(data, currentYear);
+
+  const colourStats = colourUsageStats(data);
+  const colourStatsThisYear = colourUsageStatsThisYear(data, currentYear);
+
   res.render("statistics.ejs", {
-    pikeByWeight: pikeByWeight,
-    pikeByWeightThisYear: pikeByWeightThisYear,
-    pikeByLength: pikeByLength,
-    pikeByLengthThisYear: pikeByLengthThisYear,
-    perchByWeight: perchByWeight,
-    perchByWeightThisYear: perchByWeightThisYear,
-    perchByLength: perchByLength,
-    perchByLengthThisYear: perchByWeightThisYear,
-    zanderByWeight: zanderByWeight,
-    zanderByWeightThisYear: zanderByWeightThisYear,
-    zanderByLength: zanderByLength,
-    zanderByLengthThisYear: zanderByLengthThisYear,
-    baitStats: baitStats,
-    baitStatsThisYear: baitStatsThisYear,
-    colourStats: colourStats,
-    colourStatsThisYear: colourStatsThisYear,
+    pikeByWeight,
+    pikeByWeightThisYear,
+    pikeByLength,
+    pikeByLengthThisYear,
+    perchByWeight,
+    perchByWeightThisYear,
+    perchByLength,
+    perchByLengthThisYear,
+    zanderByWeight,
+    zanderByWeightThisYear,
+    zanderByLength,
+    zanderByLengthThisYear,
+    baitStats,
+    baitStatsThisYear,
+    colourStats,
+    colourStatsThisYear,
   });
 });
 
