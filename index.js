@@ -1,8 +1,42 @@
 import express from "express";
 import Database from "better-sqlite3";
+import i18next from "i18next";
+import Backend from "i18next-fs-backend";
+import middleware from "i18next-http-middleware";
 
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Express and port
 const app = express();
 const port = 4000;
+
+//Translation package
+
+i18next
+  .use(Backend)
+
+  // .use(middleware.LanguageDetector)
+  .init({
+    lng: "en", // Set default language to English. Remove if you want your language
+    fallbackLng: "en",
+    preload: ["en", "sv"], // Preload languages
+    backend: {
+      loadPath: __dirname + "/locales/{{lng}}/{{ns}}.json",
+    },
+  });
+
+app.use(middleware.handle(i18next));
+app.use((req, res, next) => {
+  res.locals.t = req.t; // Make t() available in all languages
+  res.locals.language = req.language; //Make languagecode available
+  next();
+});
+
+//Static pages and set ejs
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -161,35 +195,48 @@ app.get("/statistics", (req, res) => {
   const data = db.prepare("SELECT * FROM fish").all();
   const currentYear = new Date().getFullYear().toString();
 
-  const pikeByWeight = fishByWeight(data, "Pike");
-  const pikeByWeightThisYear = fishByWeightThisYear(data, currentYear, "Pike");
-  const pikeByLength = fishByLength(data, "Pike");
-  const pikeByLengthThisYear = fishByLengthThisYear(data, currentYear, "Pike");
+  // Get translated species names for database queries
+  const pikeTranslated = req.t("Pike");
+  const perchTranslated = req.t("Perch");
+  const zanderTranslated = req.t("Zander");
 
-  const perchByWeight = fishByWeight(data, "Perch");
+  const pikeByWeight = fishByWeight(data, pikeTranslated);
+  const pikeByWeightThisYear = fishByWeightThisYear(
+    data,
+    currentYear,
+    pikeTranslated,
+  );
+  const pikeByLength = fishByLength(data, pikeTranslated);
+  const pikeByLengthThisYear = fishByLengthThisYear(
+    data,
+    currentYear,
+    pikeTranslated,
+  );
+
+  const perchByWeight = fishByWeight(data, perchTranslated);
   const perchByWeightThisYear = fishByWeightThisYear(
     data,
     currentYear,
-    "Perch",
+    perchTranslated,
   );
-  const perchByLength = fishByLength(data, "Perch");
+  const perchByLength = fishByLength(data, perchTranslated);
   const perchByLengthThisYear = fishByLengthThisYear(
     data,
     currentYear,
-    "Perch",
+    perchTranslated,
   );
 
-  const zanderByWeight = fishByWeight(data, "Zander");
+  const zanderByWeight = fishByWeight(data, zanderTranslated);
   const zanderByWeightThisYear = fishByWeightThisYear(
     data,
     currentYear,
-    "Zander",
+    zanderTranslated,
   );
-  const zanderByLength = fishByLength(data, "Zander");
+  const zanderByLength = fishByLength(data, zanderTranslated);
   const zanderByLengthThisYear = fishByLengthThisYear(
     data,
     currentYear,
-    "Zander",
+    zanderTranslated,
   );
 
   const baitStats = baitUsageStats(data);
@@ -215,6 +262,7 @@ app.get("/statistics", (req, res) => {
     baitStatsThisYear,
     colourStats,
     colourStatsThisYear,
+    currentYear,
   });
 });
 

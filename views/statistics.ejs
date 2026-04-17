@@ -17,7 +17,7 @@
     <%-include ("partials/header")%>
     <section class="stats-section">
       <div class="stats-headlines">
-        <h2 class="titles">Pikes</h2>
+        <h2 class="titles"><%= t("Pike") %></h2>
       </div>
       <div class="stats-container">
         
@@ -26,8 +26,8 @@
 
             <!-- ----------PIKES ------------>
             <!-- Heaviest pike-->
-             
-            <h3 class="stats-group-h3">Heaviest pike totally</h3>
+          
+            <h3 class="stats-group-h3"><%= t("Heaviest pike totally") %></h3>
               <% pikeByWeight.forEach((fish, index) => { %>
                 <div class="results">
                   <p class="results-text">
@@ -43,7 +43,7 @@
           <hr class="divider-results">
 
           <!-- Heaviest PIKE this year -->
-          <h3 class="stats-group-h3">Heaviest pike this year</h3>
+          <h3 class="stats-group-h3"><%= t("Heaviest pike")%> <%= currentYear %></h3>
             <% pikeByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -59,7 +59,7 @@
 
           <!-- Longest Pike -->
         <div class="stats-group">
-          <h3 class="stats-group-h3">Longest pike totally</h3>
+          <h3 class="stats-group-h3"><%= t("Longest pike totally") %></h3>
             <% pikeByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -73,7 +73,7 @@
           <hr class="divider-results">
 
             <!-- Longest pike this year -->
-          <h3 class="stats-group-h3">Longest pike this year</h3>
+          <h3 class="stats-group-h3"><%= t("Longest pike")%> <%= currentYear %></h3>
             <% pikeByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -90,12 +90,12 @@
       
         <!-- ----------PERCH ------------>
          <div class="stats-headlines">
-        <h2 class="titles">Perch</h2>
+        <h2 class="titles"><%= t("Perch") %></h2>
       </div>
          <!-- Heaviest perch-->
       <div class="stats-container">
         <div class="stats-group">
-          <h3 class="stats-group-h3">Heaviest perch totally</h3>
+          <h3 class="stats-group-h3"><%= t("Heaviest perch totally") %></h3>
             <% perchByWeight.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -109,7 +109,7 @@
           <hr class="divider-results">
 
               <!-- Heaviest perch this year -->
-          <h3 class="stats-group-h3">Heaviest perch this year</h3>
+          <h3 class="stats-group-h3"><%= t("Heaviest perch")%> <%= currentYear %></h3>
             <% perchByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -124,7 +124,7 @@
 
         <!-- Longest perch-->
         <div class="stats-group">
-          <h3 class="stats-group-h3">Longest perch totally</h3>
+          <h3 class="stats-group-h3"><%= t("Longest perch totally") %></h3>
             <% perchByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -138,7 +138,7 @@
             <hr class="divider-results">
 
               <!-- Longest perch this year -->
-          <h3 class="stats-group-h3">Longest perch this year</h3>
+          <h3 class="stats-group-h3"><%= t("Longest perch")%> <%= currentYear %></h3>
           <% perchByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -155,12 +155,12 @@
       <hr class="divider-groups">
         <!------------ ZANDERS ------------>
         <div class="stats-headlines">
-        <h2 class="titles">Zander</h2>
+        <h2 class="titles"><%= t("Zander") %></h2>
       </div>
         <!-- Heaviest zander -->
       <div class="stats-container">
         <div class="stats-group">
-           <h3 class="stats-group-h3">Heaviest zander totally</h3>
+           <h3 class="stats-group-h3"><%= t("Heaviest zander totally") %></h3>
               <% zanderByWeight.forEach((fish, index) => { %>
                 <div class="results">
                   <p class="results-text">
@@ -174,7 +174,7 @@
             <hr class="divider-results">
 
           <!-- Heaviest zander this year -->
-          <h3 class="stats-group-h3">Heaviest zander this year</h3>
+          <h3 class="stats-group-h3"><%= t("Heaviest zander")%> <%= currentYear %></h3>
           <% zanderByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -189,7 +189,7 @@
 
         <!-- Longest zander -->
         <div class="stats-group">
-          <h3 class="stats-group-h3">Longest zander totally</h3>
+          <h3 class="stats-group-h3"><%= t("Longest zander totally") %></h3>
             <% zanderByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -203,7 +203,7 @@
             <hr class="divider-results">
 
           <!-- Longest zander this year -->
-          <h3 class="stats-group-h3">Longest zander this year</h3>
+          <h3 class="stats-group-h3"><%= t("Longest zander")%> <%= currentYear %></h3>
           <% zanderByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -221,12 +221,12 @@
 
         <!------------ LURES ------------>
       <div class="stats-headlines">
-        <h2 class="titles">Lures and colours</h2>
+        <h2 class="titles"><%= t("Lures and colours") %></h2>
       </div>
       <div class="stats-container">
         <!-- Most used baits -->
         <div class="stats-group">
-          <h3 class="stats-group-h3">Best lure totally</h3>
+          <h3 class="stats-group-h3"><%= t("Best lure totally") %></h3>
             <% baitStats.forEach((bait, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -237,7 +237,7 @@
           <hr class="divider-results">
 
         <!-- Most used baits this year -->
-          <h3 class="stats-group-h3">Best lure this year</h3>
+          <h3 class="stats-group-h3"><%= t("Best lure") %> <%= currentYear %></h3>
             <% baitStatsThisYear.forEach((bait, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -250,7 +250,7 @@
         <!------------ COLOURS ------------>
         <div class="stats-group">
           <!-- Most used colours -->
-          <h3 class="stats-group-h3">Best colour totally</h3>
+          <h3 class="stats-group-h3"><%= t("Best colour totally") %></h3>
             <% colourStats.forEach((colour, index) => { %>
               <div class="results">
                 <p class="results-text">
@@ -261,7 +261,7 @@
             <hr class="divider-results">
 
           <!-- Most used colours this year -->
-          <h3 class="stats-group-h3">Best colour this year</h3>
+          <h3 class="stats-group-h3"><%= t("Best colour") %> <%= currentYear %></h3>
           <% colourStatsThisYear.forEach((colour, index) => { %>
                 <div class="results">
                   <p class="results-text">
