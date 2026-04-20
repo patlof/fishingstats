@@ -11,16 +11,16 @@
     />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-    <title>My fishing stats</title>
+    <title><%= t("My fishing stats") %></title>
   </head>
   <body>
     <%-include ("partials/header")%>
     <section class="catch-section">
       <div class="form-container">
-        <h1 class="primary">Register your catch</h1>
+        <h1 class="primary"><%= t("Register your catch") %></h1>
         <form method="post" action="/catch">
           <div class="fields">
-            <label class="labels">Species*:</label>
+            <label class="labels"><%= t("Species") %>*:</label>
             <input
               class="inputs"
               type="text"
@@ -31,62 +31,62 @@
           </div>
 
           <div class="fields">
-            <label class="labels">Length (cm):</label>
+            <label class="labels"><%= t("Length")%> (cm):</label>
             <input class="inputs" type="text" name="length" />
           </div>
 
           <div class="fields">
-            <label class="labels">Weight (gram):</label>
+            <label class="labels"><%= t("Weight")%> (gram):</label>
             <input class="inputs" type="text" name="weight" />
           </div>
 
           <div class="fields">
-            <label class="labels">Bait*:</label>
+            <label class="labels"><%= t("Bait")%> *:</label>
             <input class="inputs" type="text" name="bait" required />
           </div>
 
           <div class="fields">
-            <label class="labels">Colour:</label>
+            <label class="labels"><%= t("Colour")%>:</label>
             <input class="inputs" type="text" name="colour" />
           </div>
 
           <div class="fields">
-            <label class="labels">Lake*:</label>
+            <label class="labels"><%= t("Lake") %>*:</label>
             <input class="inputs" type="text" name="lake" required />
           </div>
 
           <div class="fields">
-            <label class="labels">Date (YYYY-MM-DD)*:</label>
+            <label class="labels"><%= t("Date (YYYY-MM-DD)") %>*:</label>
             <input class="inputs" type="text" name="date" required />
           </div>
 
           <div class="fields">
-            <label class="labels">Time (hhmm):</label>
+            <label class="labels"><%= t("Time (HHMM)")%>:</label>
             <input class="inputs" type="text" name="time" />
           </div>
 
           <div class="fields">
-            <label class="labels">Windstrength:</label>
+            <label class="labels"><%= t("Windstrength")%>:</label>
             <input class="inputs" type="text" name="windstrength" />
           </div>
 
           <div class="fields">
-            <label class="labels">Winddirection:</label>
+            <label class="labels"><%= t("Winddirection")%>:</label>
             <input class="inputs" type="text" name="winddirection" />
           </div>
 
           <div class="fields">
-            <label class="labels">hPa:</label>
+            <label class="labels"><%= t("hPa")%>:</label>
             <input class="inputs" type="text" name="hpa" />
           </div>
 
           <div class="fields">
-            <label class="labels">Weather:</label>
+            <label class="labels"><%= t("Weather")%>:</label>
             <input class="inputs" type="text" name="weather" />
           </div>
           <div class="form-btns">
-            <button class="form-btn reset-btn">Reset</button>
-            <button class="form-btn submit-btn">Submit</button>
+            <button class="form-btn reset-btn"><%= t("Reset")%></button>
+            <button class="form-btn submit-btn"><%= t("Submit")%></button>
           </div>
         </form>
          <% if (locals.success) { %>

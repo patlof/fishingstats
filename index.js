@@ -18,10 +18,8 @@ const port = 4000;
 
 i18next
   .use(Backend)
-
   // .use(middleware.LanguageDetector)
   .init({
-    lng: "en", // Set default language to English. Remove if you want your language
     fallbackLng: "en",
     preload: ["en", "sv"], // Preload languages
     backend: {
@@ -188,7 +186,9 @@ app.post("/catch", (req, res) => {
     data.weather,
   );
 
-  res.render("catch.ejs", { success: "The fish has been registered!" });
+  res.render("catch.ejs", {
+    success: req.t("Your fish has been registrated!"),
+  });
 });
 
 app.get("/statistics", (req, res) => {

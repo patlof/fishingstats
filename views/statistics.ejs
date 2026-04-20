@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-    <title>My fishing stats</title>
+    <title><%= t("My fishing stats") %></title>
   </head>
   <body>
     <%-include ("partials/header")%>
@@ -31,7 +31,7 @@
               <% pikeByWeight.forEach((fish, index) => { %>
                 <div class="results">
                   <p class="results-text">
-                    <%= index + 1 %>. Weight: <%= fish.weight %> g
+                    <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g
                 
                   </p>
                   <p class="results-text">
@@ -47,7 +47,7 @@
             <% pikeByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                 <%= index + 1 %>. Weight: <%= fish.weight %> g 
+                 <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g 
                  
                 </p>
                 <p class="results-text">
@@ -63,7 +63,7 @@
             <% pikeByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -77,7 +77,7 @@
             <% pikeByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -99,7 +99,7 @@
             <% perchByWeight.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Weight: <%= fish.weight %> g
+                  <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -113,7 +113,7 @@
             <% perchByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Weight: <%= fish.weight %> g
+                  <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -128,7 +128,7 @@
             <% perchByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -142,7 +142,7 @@
           <% perchByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -164,7 +164,7 @@
               <% zanderByWeight.forEach((fish, index) => { %>
                 <div class="results">
                   <p class="results-text">
-                    <%= index + 1 %>. Weight: <%= fish.weight %> g
+                    <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g
                   </p>
                   <p class="results-text">
                     Date: <%= fish.date %>
@@ -178,7 +178,7 @@
           <% zanderByWeightThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Weight: <%= fish.weight %> g
+                  <%= index + 1 %>. <%= t("Weight")%>: <%= fish.weight %> g
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -193,7 +193,7 @@
             <% zanderByLength.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>
@@ -207,7 +207,7 @@
           <% zanderByLengthThisYear.forEach((fish, index) => { %>
               <div class="results">
                 <p class="results-text">
-                  <%= index + 1 %>. Length: <%= fish.length %> cm 
+                  <%= index + 1 %>. <%= t("Length")%>: <%= fish.length %> cm 
                 </p>
                 <p class="results-text">
                   Date: <%= fish.date %>

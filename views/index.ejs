@@ -11,14 +11,16 @@
     />
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-    <title>My fishing stats</title>
+    <title><%= t("My fishing stats") %></title>
   </head>
   <body>
     <!-- <%-include ("partials/header")%> -->
     <section class="intro">
       <div class="container">
-        <button class="intro-btn catch-btn">Register a catch</button>
-        <button class="intro-btn statistic-btn">Statistics</button>
+        <button class="intro-btn catch-btn">
+          <%= t("Register a catch") %>
+        </button>
+        <button class="intro-btn statistic-btn"><%= t("Statistics") %></button>
       </div>
     </section>
     <script src="js/script.js"></script>
